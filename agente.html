@@ -1,0 +1,641 @@
+<html>
+<head>
+<script src="Peca.js"></script>
+<script src="Espaco.js"></script>
+<script language="JavaScript">
+
+var espacos = [espaco1, espaco2, espaco3, espaco4, espaco5, espaco6, espaco7, espaco8, espaco9];
+
+function GetLocalRandomico(){
+   var espaco;
+   do {
+       var i = Math.floor(Math.random()* 10);
+       //console.log("i:"+i);
+       if (i>8) continue;
+       //console.log("ocupado por:"+espacos[i].GetOcupadoPor());
+       if (espacos[i].GetOcupadoPor()=="")
+       {
+           espaco=espacos[i];
+           //console.log("achou: espaco "+espacos[i].GetId());
+           break;
+       }
+   } while (1 == 1);
+  
+   return espaco;
+}
+
+function AtualizaDistanciaObjetivo(localAtual, objetivo){
+
+   // se atingiu objetivo, distancia é 0
+   if (localAtual.GetId() == objetivo.GetId())
+   {
+       return 0;
+   }
+  
+   var espacosAdjacentesLocal = localAtual.GetEspacosAdjacentes();
+   var espacosAdjacentesObjetivo = objetivo.GetEspacosAdjacentes();
+  
+   for (var i = 0; i < espacosAdjacentesLocal.length; i++) {
+       if (espacosAdjacentesLocal[i].GetId() == objetivo.GetId())
+       {
+           return 1;
+       }
+   }
+  
+   for (var i = 0; i < espacosAdjacentesObjetivo.length; i++) {
+       if (espacosAdjacentesObjetivo[i].GetId() == localAtual.GetId())
+       {
+           return 1;
+       }
+   }
+  
+   for (var i = 0; i < espacosAdjacentesLocal.length; i++) {
+       for (var j = 0; j < espacosAdjacentesObjetivo.length; j++) {
+           if (espacosAdjacentesLocal[i].GetId() == espacosAdjacentesObjetivo[j].GetId())
+           {
+               return 2;
+           }
+       }
+   }
+   return 3; // 3 ou 4, distancia grande
+}
+var peca1 = new Peca();
+peca1.SetRestricoes("");
+peca1.SetObjetivo(espaco1);
+peca1.SetStatusAtual("buscando_satisfacao");
+peca1.SetNome("Peça1");
+espacoPeca=GetLocalRandomico();
+espacoPeca.SetOcupadoPor(peca1);
+peca1.SetLocal(espacoPeca);
+peca1.SetImagem("numero1.png");
+peca1.SetDistanciaObjetivo(AtualizaDistanciaObjetivo(espacoPeca, espaco1));
+console.log("Peça 1 no espaço "+espacoPeca.GetId());
+console.log("Distancia Peça 1 do objetivo:  "+peca1.GetDistanciaObjetivo());
+
+var peca2 = new Peca();
+peca2.SetRestricoes("");
+peca2.SetObjetivo(espaco2);
+peca2.SetStatusAtual("buscando_satisfacao");
+peca2.SetNome("Peça2");
+espacoPeca=GetLocalRandomico();
+espacoPeca.SetOcupadoPor(peca2);
+peca2.SetLocal(espacoPeca);
+peca2.SetImagem("numero2.png");
+peca2.SetDistanciaObjetivo(AtualizaDistanciaObjetivo(espacoPeca, espaco2));
+console.log("Peça 2 no espaço "+espacoPeca.GetId());
+console.log("Distancia Peça 2 do objetivo:  "+peca2.GetDistanciaObjetivo());
+
+var peca3 = new Peca();
+peca3.SetRestricoes("");
+peca3.SetObjetivo(espaco3);
+peca3.SetStatusAtual("buscando_satisfacao");
+peca3.SetNome("Peça3");
+espacoPeca=GetLocalRandomico();
+espacoPeca.SetOcupadoPor(peca3);
+peca3.SetLocal(espacoPeca);
+peca3.SetImagem("numero3.png");
+peca3.SetDistanciaObjetivo(AtualizaDistanciaObjetivo(espacoPeca, espaco3));
+console.log("Peça 3 no espaço "+espacoPeca.GetId());
+console.log("Distancia Peça 3 do objetivo:  "+peca3.GetDistanciaObjetivo());
+
+var peca4 = new Peca();
+peca4.SetRestricoes("");
+peca4.SetObjetivo(espaco4);
+peca4.SetStatusAtual("buscando_satisfacao");
+peca4.SetNome("Peça4");
+espacoPeca=GetLocalRandomico();
+espacoPeca.SetOcupadoPor(peca4);
+peca4.SetLocal(espacoPeca);
+peca4.SetImagem("numero4.png");
+peca4.SetDistanciaObjetivo(AtualizaDistanciaObjetivo(espacoPeca, espaco4));
+console.log("Peça 4 no espaço "+espacoPeca.GetId());
+console.log("Distancia Peça 4 do objetivo:  "+peca4.GetDistanciaObjetivo());
+
+var peca5 = new Peca();
+peca5.SetRestricoes("");
+peca5.SetObjetivo(espaco5);
+peca5.SetStatusAtual("buscando_satisfacao");
+peca5.SetNome("Peça5");
+espacoPeca=GetLocalRandomico();
+espacoPeca.SetOcupadoPor(peca5);
+peca5.SetLocal(espacoPeca);
+peca5.SetImagem("numero5.png");
+peca5.SetDistanciaObjetivo(AtualizaDistanciaObjetivo(espacoPeca, espaco5));
+console.log("Peça 5 no espaço "+espacoPeca.GetId());
+console.log("Distancia Peça 5 do objetivo:  "+peca5.GetDistanciaObjetivo());
+
+var peca6 = new Peca();
+peca6.SetRestricoes("");
+peca6.SetObjetivo(espaco6);
+peca6.SetStatusAtual("buscando_satisfacao");
+peca6.SetNome("Peça6");
+espacoPeca=GetLocalRandomico();
+espacoPeca.SetOcupadoPor(peca6);
+peca6.SetLocal(espacoPeca);
+peca6.SetImagem("numero6.png");
+peca6.SetDistanciaObjetivo(AtualizaDistanciaObjetivo(espacoPeca, espaco6));
+console.log("Peça 6 no espaço "+espacoPeca.GetId());
+console.log("Distancia Peça 6 do objetivo:  "+peca6.GetDistanciaObjetivo());
+
+var peca7 = new Peca();
+peca7.SetRestricoes("");
+peca7.SetObjetivo(espaco7);
+peca7.SetStatusAtual("buscando_satisfacao");
+peca7.SetNome("Peça7");
+espacoPeca=GetLocalRandomico();
+espacoPeca.SetOcupadoPor(peca7);
+peca7.SetLocal(espacoPeca);
+peca7.SetImagem("numero7.png");
+peca7.SetDistanciaObjetivo(AtualizaDistanciaObjetivo(espacoPeca, espaco7));
+console.log("Peça 7 no espaço "+espacoPeca.GetId());
+console.log("Distancia Peça 7 do objetivo:  "+peca7.GetDistanciaObjetivo());
+
+var peca8 = new Peca();
+peca8.SetRestricoes("");
+peca8.SetObjetivo(espaco8);
+peca8.SetStatusAtual("buscando_satisfacao");
+peca8.SetNome("Peça8");
+espacoPeca=GetLocalRandomico();
+espacoPeca.SetOcupadoPor(peca8);
+peca8.SetLocal(espacoPeca);
+peca8.SetImagem("numero8.png");
+peca8.SetDistanciaObjetivo(AtualizaDistanciaObjetivo(espacoPeca, espaco8));
+console.log("Peça 8 no espaço "+espacoPeca.GetId());
+console.log("Distancia Peça 8 do objetivo:  "+peca8.GetDistanciaObjetivo());
+
+var pecas = [peca1, peca2, peca3, peca4, peca5, peca6, peca7, peca8];
+var numRodada=1;
+
+console.log("inicio");
+pecaNaVez=0; // vai de 0 a 8
+
+// status:
+// satisfeito
+// agredido
+// buscando_satisfacao
+
+function ordenarPorDistancia(a, b){
+   //return b.GetDistanciaObjetivo() - a.GetDistanciaObjetivo();
+   return a[0] - b[0];
+}
+
+function ordenarPorDistanciaObjetivo(a, b){
+   //return b.GetDistanciaObjetivo() - a.GetDistanciaObjetivo();
+   return b.GetOcupadoPor().GetDistanciaObjetivo() - a.GetOcupadoPor().GetDistanciaObjetivo();
+}
+
+function TemPecaInsatisfeita()
+{
+   // ver se todas as peças estão no seu objetivo, mesmo que não estejam "satisfeitas"
+   // (podem estar "agredidas" por ex)
+   for (var i = 0; i < pecas.length; i++) {
+           if (pecas[i].GetStatusAtual()!="satisfeito" && pecas[i].GetObjetivo().GetId()!=pecas[i].GetLocal().GetId())
+               return true;
+       }
+   return false;
+}
+
+// nao leva em conta se o espaço está ocupado ou nao, retorna proximos espacos para peça ir
+function getProximosEspaco(localAtual, objetivo)
+{
+   //console.log("entrou funcao getProximoEspaco");
+   //console.log("objetivo.GetId(): "+objetivo.GetId());
+  
+   var espacosParaIr=new Array();
+  
+   var espacosAdjacentesAtual = localAtual.GetEspacosAdjacentes();
+   //console.log("espacosAdjacentesAtual.length "+espacosAdjacentesAtual.length);
+   // objtivo é adjacente a onde estou?
+  
+   var espacosDistancia1=new Array();
+   var espacosDistancia2=new Array();
+   var espacosDistancia3=new Array();
+  
+   for (var i=0;i< espacosAdjacentesAtual.length; i++)
+   {
+       //console.log("espacosAdjacentesAtual["+i+"].GetId "+espacosAdjacentesAtual[i].GetId());
+       var distancia = AtualizaDistanciaObjetivo(objetivo,espacosAdjacentesAtual[i]);
+       //console.log("distancia entre "+objetivo.GetId() +"(objetivo) e "+espacosAdjacentesAtual[i].GetId()+"(adjacente local atual) : "+distancia);
+       if (distancia==0)
+       {
+           //console.log("adicionando espaço para ir - espacosDistancia1: "+espacosAdjacentesAtual[i].GetId());
+           espacosDistancia1[espacosDistancia1.length] = espacosAdjacentesAtual[i];
+       }
+       else if (distancia==1)
+       {
+            espacosDistancia2[espacosDistancia2.length] = espacosAdjacentesAtual[i];
+       }
+       else if (distancia>=2)
+       {
+            espacosDistancia3[espacosDistancia3.length] = espacosAdjacentesAtual[i];
+       }
+   }
+  
+   //var espacosVsDistancia=[distancia, espacosAdjacentesAtual[i]];
+   //espacosParaIr[espacosParaIr.length] = espacosVsDistancia;
+  
+   espacosParaIr[0] = espacosDistancia1; // locais com distancia 1
+   espacosParaIr[1] = espacosDistancia2; // locais com distancia 2
+   espacosParaIr[2] = espacosDistancia3; // locais com distancia 3
+  
+   return espacosParaIr;
+}
+
+function atualizaDesenhoRenderiza(){
+   for (var i = 0; i < 9; i++) {
+       //alert(espacos[i].GetOcupadoPor().GetImagem());
+       //console.log("i:"+i);
+       var nomeDiv = 'divEspaco'+(i+1);
+       //console.log("nomeDiv:"+nomeDiv)
+       //console.log("espacos[i+1]:"+espacos[i+1])
+       if ((espacos[i] == "") || (espacos[i]== undefined) || (espacos[i].GetOcupadoPor()==""))
+       {
+           nomeImagem = "vazio.png";
+       }
+       else
+       {
+           nomeImagem = espacos[i].GetOcupadoPor().GetImagem();
+       }
+       //console.log("nomeImagem:"+nomeImagem)
+       //console.log("espacos[i+1]:"+espacos[i+1])
+       //console.log("espacos[i+1].GetOcupadoPor():"+espacos[i+1].GetOcupadoPor())
+       document.getElementById(nomeDiv).innerHTML = '<image src='+nomeImagem+'>';
+       //console.log("------------------------");
+   }
+}
+
+</script>
+</head>
+<body>
+
+<table border="1">
+<tr>
+<td>
+<div id="divEspaco1"><image src="numero1.png"></div>
+</td>
+<td>
+<div id="divEspaco2"></div>
+</td>
+<td>
+<div id="divEspaco3"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div id="divEspaco4"></div>
+</td>
+<td>
+<div id="divEspaco5"></div>
+</td>
+<td>
+<div id="divEspaco6"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div id="divEspaco7"></div>
+</td>
+<td>
+<div id="divEspaco8"></div>
+</td>
+<td>
+<div id="divEspaco9"></div>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<input type="button" value="  Avançar automático  " id="idBotaoIniciar" onclick="Iniciar();">&nbsp;&nbsp;
+<input type="button" value="  Avançar manual  " id="idBotaoProcessar" onclick="Processa();">&nbsp;&nbsp;
+<input type="button" value="  Resetar  " id="idBotaoReset" onclick="window.location.reload(true);">
+<br><br>
+<br><br>
+Avanço automático:
+<input type='text' id = "idAvancoAutomatico" value='1000'><br><br>
+Ressetar restrições a cada:
+<input type='text' id = "idRessetarRestricoes" value='100'><br><br>
+Ressetar agressores a cada:
+<input type='text' id = "idRessetarAgressores" value='100'>
+</body>
+</html>
+
+<script>
+
+function fugirToLocal(agenteExecutando, novoLocal)
+{
+   // atualizar local anterior
+   agenteExecutando.GetLocal().SetOcupadoPor("");
+   console.log("Fugindo para: "+novoLocal.GetId());
+   agenteExecutando.SetStatusAtual("buscando_satisfacao");
+   agenteExecutando.SetLocal(novoLocal);
+   novoLocal.SetOcupadoPor(agenteExecutando);
+   agenteExecutando.SetDistanciaObjetivo(AtualizaDistanciaObjetivo(agenteExecutando.GetLocal(), agenteExecutando.GetObjetivo()));
+}
+
+function agredirPeca(agressor, agredido)
+{
+   console.log("Agredindo peça: "+agredido.GetNome());
+   agredido.SetStatusAtual("agredido");
+   // restricao
+   agredido.SetRestricoes(agredido.GetLocal());
+   var agressoes = new Set();
+   if (agredido.GetAgredidoPor().size>0)
+       agressoes = agredido.GetAgredidoPor();
+   agressoes.add(agressor);
+   //console.log("agressoes.size:"+agressoes.size);
+   agredido.SetAgredidoPor(agressoes);
+}
+
+
+
+var numRodadaMax = 0;
+var temPecaInsatisfeita = TemPecaInsatisfeita();
+function Iniciar(){
+   numRodadaMax = numRodadaMax + parseInt(document.getElementById("idAvancoAutomatico").value);
+   //alert(numRodadaMax);
+   //while (temPecaInsatisfeita) {
+   while (temPecaInsatisfeita && numRodada<numRodadaMax) {
+       Processa();       
+       temPecaInsatisfeita = TemPecaInsatisfeita();
+   }
+   atualizaDesenhoRenderiza();
+}
+
+function Processa()
+{
+   console.log("temPecaInsatisfeita: "+temPecaInsatisfeita);
+   agenteExecutando = pecas[pecaNaVez];
+   console.log("Rodada: "+numRodada);
+   console.log("pecaNaVez: "+agenteExecutando.GetNome());
+   console.log("Status:"+agenteExecutando.GetStatusAtual());
+   console.log("Objetivo:"+agenteExecutando.GetObjetivo().GetId());
+   console.log("está no local.GetId(): " +agenteExecutando.GetLocal().GetId());
+   if (agenteExecutando.GetAgredidoPor().size>0)
+   {
+       for (let item of agenteExecutando.GetAgredidoPor().values()) console.log("Agredido por:"+item.GetNome());
+   }
+   if (agenteExecutando.GetRestricoes()!="")
+       console.log("Restrição:"+agenteExecutando.GetRestricoes().GetId())
+   // checkagem inicial para ver se atingiu objetivo e nao foi agredido
+   if (agenteExecutando.GetLocal().GetId()==agenteExecutando.GetObjetivo().GetId() && (agenteExecutando.GetStatusAtual()!="agredido"))
+   {
+       agenteExecutando.SetStatusAtual("satisfeito");
+   }
+   if (agenteExecutando.GetStatusAtual()=="satisfeito")
+   {
+       console.log("Peça satisfeita, pulando a vez");
+   }
+   else
+   {
+       if (agenteExecutando.GetStatusAtual()=="agredido")
+       {
+           var achouLocalFuga=false;
+           var localAtual = agenteExecutando.GetLocal();
+           var agredir=new Array();
+           var indiceAgredir=0;
+            // busca algum espaço vazio aleatorio q nao esteja nas suas restricoes
+           var locaisFugaAdjacentes =  agenteExecutando.GetLocal().GetEspacosAdjacentes();
+           var fugiu=false;
+          
+           if (!fugiu)
+           {            
+               var locaisParaIr= new Array();
+               var locaisFuga = getProximosEspaco(agenteExecutando.GetLocal(), agenteExecutando.GetObjetivo());
+               var locaisDistancia1 = locaisFuga[0];
+               var locaisDistancia2 = locaisFuga[1];
+               var locaisDistancia3 = locaisFuga[2];
+               
+               //  console.log("locaisDistancia1.length: "+locaisDistancia1.length);
+               //  console.log("locaisDistancia2.length: "+locaisDistancia2.length);
+               //  console.log("locaisDistancia3.length: "+locaisDistancia3.length);
+               
+                //console.log("numAleatorio: "+numAleatorio)
+                var peso =15;
+                for (var j=0;j<locaisDistancia1.length;j++)
+                {
+                   for (var k=0;k<peso;k++)
+                   {
+                       locaisParaIr[locaisParaIr.length] = locaisDistancia1[j];
+                   }
+                }
+                peso =10;
+                for (var j=0;j<locaisDistancia2.length;j++)
+                {
+                   for (var k=0;k<peso;k++)
+                   {
+                       locaisParaIr[locaisParaIr.length] = locaisDistancia2[j];
+                   }
+                }
+                peso =5;
+                for (var j=0;j<locaisDistancia3.length;j++)
+                {
+                   for (var k=0;k<peso;k++)
+                   {
+                       locaisParaIr[locaisParaIr.length] = locaisDistancia3[j];
+                   }
+                }
+                //console.log("locaisParaIr.length="+locaisParaIr.length)
+                var continua = true;
+                var cont = 0;
+                while (continua && cont<10 )
+                {
+                   cont++;
+                   var numAleatorio = Math.floor(Math.random() * locaisParaIr.length);
+                  
+                   var agenteNoLocal = locaisParaIr[numAleatorio].GetOcupadoPor();
+                   if (agenteExecutando.GetRestricoes()=="" || (agenteExecutando.GetRestricoes()!=""
+                   && agenteExecutando.GetRestricoes().GetId()==agenteExecutando.GetLocal().GetId())
+                   || (agenteExecutando.GetRestricoes()!="" && agenteExecutando.GetRestricoes().GetId()!=locaisParaIr[numAleatorio].GetId()))
+                   {
+                       if (agenteNoLocal=="")
+                       {
+                           fugirToLocal(agenteExecutando, locaisParaIr[numAleatorio]);
+                           continua=false;
+                           break;
+                       }
+                       else{
+                           if (agenteExecutando.GetAgredidoPor().size>0
+                           && agenteExecutando.GetAgredidoPor().has(agenteNoLocal))
+                           {
+                               //console.log("já agredido por este agente, nao agride de volta"); // nao agride de volta
+                               agredirEmUltimoCaso = agenteNoLocal;
+                               continue;
+                           }
+                           else{
+                               agredirPeca(agenteExecutando, agenteNoLocal);
+                               continua=false;
+                               break;
+                           }
+                       }
+                   }
+                }
+
+               /* if (continua)
+                {
+                   console.log("Até agora nao agrdiu ngm, caiu no continua");
+                    if (agredirEmUltimoCaso!="")
+                    {
+                       //console.log("Agredindo em ultimo caso peça: "+agredirEmUltimoCaso.GetNome());
+                       agredirPeca(agenteExecutando, agredirEmUltimoCaso);
+                       continua=false;
+                   }
+                   else console.log("Não agredindo ngm");
+                }*/
+           }
+       }
+        else if (agenteExecutando.GetStatusAtual()=="buscando_satisfacao")
+        {
+
+           var locaisParaIr= new Array();
+               var locaisFuga = getProximosEspaco(agenteExecutando.GetLocal(), agenteExecutando.GetObjetivo());
+
+               var locaisDistancia1 = locaisFuga[0];
+               var locaisDistancia2 = locaisFuga[1];
+               var locaisDistancia3 = locaisFuga[2];
+               
+               //  console.log("locaisDistancia1.length: "+locaisDistancia1.length);
+               //  console.log("locaisDistancia2.length: "+locaisDistancia2.length);
+               //  console.log("locaisDistancia3.length: "+locaisDistancia3.length);
+               
+                //console.log("numAleatorio: "+numAleatorio)
+                var peso =15;
+                for (var j=0;j<locaisDistancia1.length;j++)
+                {
+                   for (var k=0;k<peso;k++)
+                   {
+                       locaisParaIr[locaisParaIr.length] = locaisDistancia1[j];
+                   }
+                }
+                peso =10;
+                for (var j=0;j<locaisDistancia2.length;j++)
+                {
+                   for (var k=0;k<peso;k++)
+                   {
+                       locaisParaIr[locaisParaIr.length] = locaisDistancia2[j];
+                   }
+                }
+                peso =5;
+                for (var j=0;j<locaisDistancia3.length;j++)
+                {
+                   for (var k=0;k<peso;k++)
+                   {
+                       locaisParaIr[locaisParaIr.length] = locaisDistancia3[j];
+                   }
+                }
+                //console.log("locaisParaIr.length="+locaisParaIr.length)
+                var continua = true;
+                var cont = 0;
+                while (continua && cont<50 )
+                {
+                   cont++;
+                   var numAleatorio = Math.floor(Math.random() * locaisParaIr.length);
+                   var agenteNoLocal = locaisParaIr[numAleatorio].GetOcupadoPor();
+                   if (agenteExecutando.GetRestricoes()=="" || (agenteExecutando.GetRestricoes()!=""
+                   && agenteExecutando.GetRestricoes().GetId()==agenteExecutando.GetLocal().GetId())
+                   || (agenteExecutando.GetRestricoes()!="" && agenteExecutando.GetRestricoes().GetId()!=locaisParaIr[numAleatorio].GetId()))
+                   {
+                       if (agenteNoLocal=="")
+                       {
+                           fugirToLocal(agenteExecutando, locaisParaIr[numAleatorio]);
+                           continua=false;
+                           break;
+                       }
+                       else{
+                           if (agenteExecutando.GetAgredidoPor().size>0
+                           && agenteExecutando.GetAgredidoPor().has(agenteNoLocal))
+                           {
+                               //console.log("já agredido por este agente, nao agride de volta"); // nao agride de volta
+                               agredirEmUltimoCaso = agenteNoLocal;
+                               continue;
+                           }
+                           else{
+                               agredirPeca(agenteExecutando, agenteNoLocal);
+                               continua=false;
+                               break;
+                           }
+                       }
+                   }
+                }
+
+               //return locaisParaIr[Math.floor(Math.random()*locaisParaIr.length)];
+
+                if (continua)
+                {
+                   ///console.log("Até agora nao agrdiu ngm, caiu no continua");
+                    if (agredirEmUltimoCaso!="")
+                    {
+                       //console.log("Agredindo em ultimo caso peça: "+agredirEmUltimoCaso.GetNome());
+                       agredirPeca(agenteExecutando, agredirEmUltimoCaso);
+                       continua=false;
+                   }
+                   else console.log("Não agredindo ninguém");
+                }
+        }
+   }
+   pecaNaVez++;
+   if (pecaNaVez>7)
+   {
+       pecaNaVez=0; // volta vez pro agente 1
+   }
+
+   numRodada++;
+  
+   // limpando Restricoes sempre que numRodada mod 10 = 0
+   if (numRodada % document.getElementById("idRessetarRestricoes").value ==0)
+   {
+       peca1.SetRestricoes("");
+       peca2.SetRestricoes("");
+       peca3.SetRestricoes("");
+       peca4.SetRestricoes("");
+       peca5.SetRestricoes("");
+       peca6.SetRestricoes("");
+       peca7.SetRestricoes("");
+       peca8.SetRestricoes("");
+       console.log("Limpando restricoes");
+   }
+   if (numRodada % document.getElementById("idRessetarAgressores").value ==0)
+   {
+
+       peca1.SetAgredidoPor("");
+       peca2.SetAgredidoPor("");
+       peca3.SetAgredidoPor("");
+       peca4.SetAgredidoPor("");
+       peca5.SetAgredidoPor("");
+       peca6.SetAgredidoPor("");
+       peca7.SetAgredidoPor("");
+       peca8.SetAgredidoPor("");
+
+       if (peca1.GetStatusAtual()=="agredido")
+           peca1.GetStatusAtual("buscando_satisfacao");
+       if (peca2.GetStatusAtual()=="agredido")
+           peca2.GetStatusAtual("buscando_satisfacao");
+       if (peca3.GetStatusAtual()=="agredido")
+           peca3.GetStatusAtual("buscando_satisfacao");
+       if (peca4.GetStatusAtual()=="agredido")
+           peca4.GetStatusAtual("buscando_satisfacao");
+       if (peca5.GetStatusAtual()=="agredido")
+           peca5.GetStatusAtual("buscando_satisfacao");
+       if (peca6.GetStatusAtual()=="agredido")
+           peca6.GetStatusAtual("buscando_satisfacao");
+       if (peca7.GetStatusAtual()=="agredido")
+           peca7.GetStatusAtual("buscando_satisfacao");
+       if (peca8.GetStatusAtual()=="agredido")
+           peca8.GetStatusAtual("buscando_satisfacao");
+
+       console.log("Limpando agressoes");
+   }
+   console.log("------------------------");
+atualizaDesenhoRenderiza();
+}
+
+atualizaDesenhoRenderiza();
+
+console.log("------------FIMM------------");
+
+</script>
+
+
+
+
+
+
